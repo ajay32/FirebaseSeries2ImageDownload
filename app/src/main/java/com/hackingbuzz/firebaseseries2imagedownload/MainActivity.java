@@ -35,6 +35,9 @@ import com.squareup.picasso.Picasso;
 
 // Required Intent and Read External Storage Permission
 
+
+// see if you the image you donwloading into the imageView..want it always when you user open app..then you can like get image in many different ways..like get the image path n call it on onCreate method.. n everything u will see the image on that image view...n serveral other ways...
+//in this examle we are just getting the image only when user select the image from galary..
 public class MainActivity extends AppCompatActivity {
 
     private StorageReference mStorageRef;
@@ -44,6 +47,7 @@ public class MainActivity extends AppCompatActivity {
     Bitmap bitmap;
     private TextView tap;
     private ImageView profile;
+    Uri downloadUri;
 
 
 
@@ -60,6 +64,7 @@ public class MainActivity extends AppCompatActivity {
 
         initObjects();
         initView();
+
 
 
         uploadFile.setOnClickListener(new View.OnClickListener() {
@@ -112,7 +117,7 @@ public class MainActivity extends AppCompatActivity {
                     dialog.dismiss();
                     tap.setVisibility(View.GONE);
 
-                   Uri downloadUri = taskSnapshot.getDownloadUrl();
+                    downloadUri = taskSnapshot.getDownloadUrl();
 
                  //   Picasso.with(MainActivity.this).load(downloadUri).into(profile);
 
